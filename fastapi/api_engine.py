@@ -12,8 +12,8 @@ app = FastAPI()
 # read csvs from /data
 # transfer to dataframe and array
 
-data_num = pandas.read_csv('data/dane_numeryczne.csv')
-data_cat = pandas.read_csv('data/dane_kategoryczne.csv')
+data_num = pandas.read_csv('dane_numeryczne.csv')
+data_cat = pandas.read_csv('dane_kategoryczne.csv')
 
 print(data_num)
 print(data_cat)
