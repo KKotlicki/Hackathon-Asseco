@@ -1,11 +1,21 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import Optional
-from scripts.numerical_outlier_detector import DataModelNum, DataModelCat
+from scripts.numerical_outlier_detector import DataModelNum
+from scripts.categorical_outlier_detector import DataModelCat
 import sklearn
 import numpy
+import pandas
 
 app = FastAPI()
+
+# read csvs from /data
+# transfer to dataframe and array
+
+# |
+# |
+# |
+# V
 
 df_training_num = np.array([1, 1, 1, 1])
 data_num = DataModelNUm(df_training_num)
@@ -18,7 +28,7 @@ class RequestBody(BaseModel):
     stan_cywilny: Optional[int] = 0
     wyksztalcenie: Optional[int] = 0
     kategoria: Optional[str] = ""
-    kwota_obciazenia: Optional[float] = 0.0
+    kwota_obciazenia: Optional[float] = 0
     miesiac_operacji: Optional[int] = 0
     wiek_klienta: Optional[int] = 0
     wiek_konta: Optional[int] = 0
