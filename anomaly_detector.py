@@ -11,7 +11,7 @@ class DataModel:
         self.update_model(df_training)
 
     def __repr__(self):
-        return
+        return str(self.preds)
 
     def update_model(self, df_training):
         self.preds = self.model.fit_predict(df_training)
@@ -21,4 +21,8 @@ class DataModel:
 
     def is_outlier(self, record):
         self.pred = self.model.predict(record)
+        if self.pred == 1:
+            self.pred = False
+        else:
+            self.pred = True
         return self.pred
