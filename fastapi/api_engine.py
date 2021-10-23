@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import Optional
-from numerical_outlier_detector import DataModelNum, DataModelCat
+from scripts.numerical_outlier_detector import DataModelNum, DataModelCat
 import sklearn
 import numpy
 
