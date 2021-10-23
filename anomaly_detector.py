@@ -1,6 +1,5 @@
 from sklearn.ensemble import IsolationForest
 import numpy as np
-from matplotlib import pyplot as plt
 
 
 class DataModel:
@@ -21,5 +20,5 @@ class DataModel:
         self.outliers_rate = preds_dict[-1]/(preds_dict[-1]+preds_dict[1])
 
     def is_outlier(self, record):
-        self.pred = self.model.predict(df_training)
+        self.pred = self.model.predict(record)
         return self.pred
