@@ -2,13 +2,13 @@ from sklearn.ensemble import IsolationForest
 import numpy as np
 
 
-class DataModel:
-    def __init__(self, df_training):
+class DataModelNum:
+    def __init__(self, df_train):
         self.pred = None
         self.preds = None
         self.outliers_rate = None
         self.model = IsolationForest(max_samples=1000, random_state=1, contamination='auto')
-        self.update_model(df_training)
+        self.update_model(df_train)
 
     def __repr__(self):
         return str(self.preds)
@@ -21,8 +21,4 @@ class DataModel:
 
     def is_outlier(self, record):
         self.pred = self.model.predict(record)
-        if self.pred == 1:
-            self.pred = False
-        else:
-            self.pred = True
-        return self.pred
+        return self.pred == 1
