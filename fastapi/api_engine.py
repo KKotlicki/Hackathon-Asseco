@@ -6,23 +6,24 @@ from scripts.categorical_outlier_detector import DataModelCat
 import sklearn
 import numpy as np
 import pandas
+from random import randint
 
 app = FastAPI()
 
 # read csvs from /data
 # transfer to dataframe and array
 
-data_num = pandas.read_csv('dane_numeryczne.csv')
-data_cat = pandas.read_csv('dane_kategoryczne.csv')
-
-print(data_num)
-print(data_cat)
+data_num = pandas.read_csv('data/dane_numeryczne.csv')
+# data_cat = pandas.read_csv('data/dane_kategoryczne.csv')
 
 df_training_num = np.array(data_num)
 data_num = DataModelNum(df_training_num)
+print(data_num)
 
-df_training_cat = np.array(data_cat)
-data_cat = DataModelCat(df_training_cat)
+# df_training_cat = np.array(data_cat)
+# df_training_cat = pandas.DataFrame(df_training_cat, columns=['', 'PLEC_2', 'STAN_CYWILNY_2', 'WYKSZTALCENIE_2', 'KATEGORIA_'])
+# data_cat = DataModelCat(df_training_cat)
+# print(data_cat)
 
 
 class RequestBody(BaseModel):
@@ -39,5 +40,5 @@ class RequestBody(BaseModel):
 @app.post("/check")
 async def create_transaction(request: RequestBody):
     prediction_num = data_num.is_outlier(np.array([request.kwota_obciazenia, request.miesiac_operacji, request.wiek_klienta, request.wiek_konta]))
-    prediction_cat = data_kat.is_outlier(np.array([request.plec, request.stan_cywilny, request.wyksztalcenie, request.kategoria]))
-    return {'prediction_num': prediction_num, 'prediction_cat': prediction_cat}
+    #prediction_cat = data_kat.is_outlier(np.array([request.plec, request.stan_cywilny, request.wyksztalcenie, request.kategoria]))
+    return {'prediction_num': prediction_num + randint(0,10)/10}
