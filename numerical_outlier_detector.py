@@ -2,7 +2,7 @@ from sklearn.ensemble import IsolationForest
 import numpy as np
 
 
-class DataModel:
+class DataModelNum:
     def __init__(self, df_training):
         self.pred = None
         self.preds = None
