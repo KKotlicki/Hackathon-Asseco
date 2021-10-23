@@ -7,7 +7,7 @@ class DataModelNum:
         self.pred = None
         self.preds = None
         self.outliers_rate = None
-        self.model = IsolationForest(max_samples=100000, random_state=1, contamination='auto')
+        self.model = IsolationForest(max_samples=300000, random_state=1, contamination='auto')
         self.update_model(arr_train)
 
     def __repr__(self):
